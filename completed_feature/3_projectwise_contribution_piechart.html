@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Project-wise Contribution</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .full-height {
+            height: 100%;
+        }
+
+        div.tooltip {	
+                position: absolute;			
+                text-align: center;			
+                width: 150px;					
+                height: 40px;					
+                padding: 2px;				
+                font: 16px sans-serif;
+                color:red;		
+                background: white;
+                border: 1px;		
+                pointer-events: none;			
+        }
+        .arc text {
+            font: 16px sans-serif;
+            color: #fff;
+            text-anchor: middle;
+        }
+
+        .arc path {
+        stroke: #DDDDDD;
+        stroke-width: 2;
+        }
+    </style>
+
+   
+</head>
+<body>
+  <body>
+       
+    <div class="row h-100 justify-content-center">
+        <div class="col">
+            <div class="test">
+                <select id = "monthdropdown">
+                    <option value="nov">November</option>
+                    <option value="dec">December</option>
+                    <option value="jan">January</option>
+                  </select>
+                  <select id = "opt">
+                <option value="1">Wasting(%)</option>
+                <option value="2">Stunting(%)</option>
+                <option value="3">Underweight(%)</option>
+                <option value="4">Low Birth Weight(%)</option>
+                <option value="5">Percentage of children(6-24monts)initiated appropriate complementary feed(%)</option>
+                <option value="6">Percentage of children breastfed at birth(%)</option>
+                <option value="7">Percentage of children exclusively breastfeeding(%)</option>
+                <option value="8">Percentage of children 1 year imunization(%)</option>
+                <option value="9">Percentage of Anemic pragnant women(%)</option>
+                <option value="10">Percentage of trimester 3 women counselled on immediate breastfeeding(%)</option>
+                <option value="11">Percentage of women eating extra meal during pregnancy(%)</option>
+                <option value="12">Percentage of women resting during pregnancy(%)</option>
+                <option value="13">Percent women had at least 4 ANC visit by delivery(%)</option>
+                 
+              </select> 
+              </div>
+            <div class="row h-40 justify-content-center">
+                <svg width="1300" height="850"></svg>
+            </div>
+          </div>
+        </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js"></script>
+
+        <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+
+    <script>
+        const svg = d3.select('svg');
+        const width = +svg.attr('width');
+        const height = +svg.attr('height');
+        var radius = Math.min(width, height) / 3;
+
+        const render = data =>{
+        //   console.log(data)
+        const margin = {left:450,top:450 ,right:40,bottom:30};
+        const innerWidth = width - margin.left - margin.right;
+        const innerHeight = height - margin.top - margin.bottom;
+        
+        const g = svg.append('g')
+                .attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+        let arcInitial = d => d.wasting;
+            
+        var pie = d3.pie()
+                    .value(function(d) { 
+                        return arcInitial(d); });
+                        
+
+        var path = d3.arc()
+                     .outerRadius(radius -10)
+                     .innerRadius(0);
+                    
+        var label = d3.arc()
+                     .outerRadius(radius - 10)
+                     .innerRadius(radius - 10);
+                    
+                    
+
+                const onMouseOver = d =>{	
+                    div.transition().duration(200).style("opacity", .9);		
+                    div	.html(d.data.project+"<br>"+arcInitial(d.data)+"%")
+                        .style("left", d3.event.pageX + "px")
+                        .style("top",  d3.event.pageY - 30 + "px");	
+                    }
+                    
+        var div = d3.select("body").append("div")	
+            .attr("class", "tooltip")				
+            .style("opacity", 0);
+
+                oi = {"wasting_percent":[],"stunting_percent":[],"underweight_percent":[],"low_birth_weight_percent":[],"prnt_intd_cf_6to24mnth_child":[],"prnt_chld_bf_at_birth":[],"prnt_chld_excly_bf":[],"prnt_child_1yr_immnztn":[],"prnt_anwmic_wmn":[],"prnt_trmstr_3wmn_cnsld_imdtbf":[],"prnt_wmn_etg_xtr_ml_drng_prgncy":[],"prnt_wmn_rstg_drg_prgncy":[],"prnt_4_anc_vst_dlvry":[]}
+                
+            data.forEach(d => {
+                oi.wasting_percent.push(d.wasting_percent);
+                oi.stunting_percent.push(d.stunting_percent);
+                oi.underweight_percent.push(d.underweight_percent);
+                oi.low_birth_weight_percent.push(d.low_birth_weight_percent);
+                oi.prnt_intd_cf_6to24mnth_child.push(d.prnt_intd_cf_6to24mnth_child);
+                oi.prnt_chld_bf_at_birth.push(d.prnt_chld_bf_at_birth);
+                oi.prnt_chld_excly_bf.push(d.prnt_chld_excly_bf);
+                oi.prnt_child_1yr_immnztn.push(d.prnt_child_1yr_immnztn);
+                oi.prnt_anwmic_wmn.push(d.prnt_anwmic_wmn);
+                oi.prnt_trmstr_3wmn_cnsld_imdtbf.push(d.prnt_trmstr_3wmn_cnsld_imdtbf);
+                oi.prnt_wmn_etg_xtr_ml_drng_prgncy.push(d.prnt_wmn_etg_xtr_ml_drng_prgncy);
+                oi.prnt_wmn_rstg_drg_prgncy.push(d.prnt_wmn_rstg_drg_prgncy);
+                oi.prnt_4_anc_vst_dlvry.push(d.prnt_4_anc_vst_dlvry);
+          
+
+                
+            });
+
+            // console.log(d3.min(oi));
+
+            var color = d3.scaleSequential().domain([d3.min(arcInitial),d3.max(arcInitial)])
+            .interpolator(d3.interpolateRdYlGn);
+            
+        var arc = g.selectAll(".arc");
+        var arcData = arc.data(pie(data));
+        var arcEnter = arcData.enter().append("g")
+        .attr("class", "arc");
+
+            arcEnter.append("path")
+            .attr("d", path)
+            .attr("fill", function(d) { 
+                return color(arcInitial(d.data)); })
+                .on("mouseover", d => onMouseOver(d))					
+                        .on("mouseout", function(d) {		
+                    div.transition()		
+                        .duration(500)		
+                        .style("opacity", 0);
+                });
+
+            // arcEnter.append("text")
+            // .attr("transform", function(d) {
+            //     var _d = label.centroid(d);
+            //     _d[0] *= 1.40;	//multiply by a constant factor
+            //     _d[1] *= 1.40;	//multiply by a constant factor
+            //     return "translate(" + _d + ")";
+            // })
+            // .attr("dy", ".50em")
+            // .style("text-anchor", "middle")
+            // .text(function(d) { return (d.data.project) + ": " + (arcInitial(d.data)) + "%" });
+
+            //tooltip
+        // Define the div for the tooltip
+        
+    
+        
+            makeviz = opt =>{
+
+                arc.selectAll("*").remove();
+                $( ".hello" ).remove();
+
+
+                let tansitionDuration = 1000;
+                    if(opt == 1){
+                    arcInitial  = d => d.stunting_percent;
+                    data = sortData(data,'stunting_percent');
+                }else if (opt == 2 ){
+                    arcInitial  = d => d.wasting_percent; 
+                    data = sortData(data,'wasting_percent');
+                }else if (opt == 3 ){
+                    arcInitial  = d => d.underweight_percent; 
+                    data = sortData(data,'underweight_percent');
+                }else if (opt == 4 ){
+                    arcInitial  = d => d.low_birth_weight_percent;
+                    data = sortData(data,'low_birth_weight_percent');
+                }else if (opt == 5 ){
+                    arcInitial  = d => d.prnt_intd_cf_6to24mnth_child;
+                    data = sortData(data,'prnt_intd_cf_6to24mnth_child');
+                }else if (opt == 6 ){
+                    arcInitial  = d => d.prnt_chld_bf_at_birth;
+                    data = sortData(data,'prnt_chld_bf_at_birth');
+                }else if (opt == 7 ){
+                    arcInitial  = d => d.prnt_chld_excly_bf;
+                    data = sortData(data,'prnt_chld_excly_bf');
+                }else if (opt == 8 ){
+                    arcInitial  = d => d.prnt_child_1yr_immnztn;
+                    data = sortData(data,'prnt_child_1yr_immnztn');
+                }else if (opt == 9 ){
+                    arcInitial  = d => d.prnt_anwmic_wmn;
+                    data = sortData(data,'prnt_anwmic_wmn');
+                }else if (opt == 10 ){
+                    arcInitial  = d => d.prnt_trmstr_3wmn_cnsld_imdtbf;
+                    data = sortData(data,'prnt_trmstr_3wmn_cnsld_imdtbf');
+                }else if (opt == 11 ){
+                    arcInitial  = d => d.prnt_wmn_etg_xtr_ml_drng_prgncy;
+                    data = sortData(data,'prnt_wmn_etg_xtr_ml_drng_prgncy');
+                }else if (opt == 12 ){
+                    arcInitial  = d => d.prnt_wmn_rstg_drg_prgncy;
+                    data = sortData(data,'prnt_wmn_rstg_drg_prgncy');
+                }else if (opt == 13 ){
+                    arcInitial  = d => d.prnt_4_anc_vst_dlvry;
+                    data = sortData(data,'prnt_4_anc_vst_dlvry');
+                }
+                var pie = d3.pie()
+                    .value(function(d) { 
+                        return arcInitial(d); });
+                
+                var label = d3.arc()
+                    .outerRadius(radius - 10)
+                    .innerRadius(radius - 40);
+       
+
+                    var mycolor = d3.scaleSequential().domain([d3.min(arcInitial(oi)),d3.max(arcInitial(oi))])
+            //.interpolator(d3.interpolateRdYlGn);
+            .interpolator(d3.interpolate("red", "white"));
+
+
+            var arcData = arc.data(pie(data));
+            var arcEnter = arcData.enter().append("g")
+                .attr("class", "arc");
+                arcEnter.append("path")
+            .attr("d", path)
+            .transition().duration(tansitionDuration)
+            .attr("fill", function(d) { 
+                return mycolor(arcInitial(d.data)); });
+                
+                var getAngle = function(d) {
+  return (180 / Math.PI * (d.startAngle + d.endAngle) / 2 + 90);
+};    
+            arcEnter.append("text")
+            .attr("transform", function(d) {
+                var _d = label.centroid(d);
+                _d[0] *= 1.40;	//multiply by a constant factor
+                _d[1] *= 1.40;	//multiply by a constant factor
+                return "translate(" + _d + ") rotate(" + getAngle(d) + ")";
+            })
+            .attr("dy", ".90em")
+            .attr("class", "hello")
+            .style("text-anchor", "middle")
+            .text(function(d) { return (d.data.district_n) + ": " + (arcInitial(d.data)) + "%" });
+                              
+            }       
+
+        const dropdownChange = () =>{
+        val = document.getElementById("opt").value
+        makeviz(val);
+        }
+        makeviz(1);
+
+        const dropdownList = ['wasting','stunting','underweight','lbw'];
+        var dropdown = d3.select("#opt")
+            .on("change", dropdownChange);
+        }
+
+
+        const monthwise = (data) => {
+        data.forEach(d => {
+                d.wasting_percent = +d.wasting_percent;
+                d.stunting_percent = +d.stunting_percent;
+                d.underweight_percent = +d.underweight_percent;
+                d.low_birth_weight_percent = +d.low_birth_weight_percent
+
+            });
+            var aproperty = [];
+            var sproperty = [];
+            var oproperty = [];
+        data.forEach(d =>{
+            var temp = {};
+            temp['district_n'] = d.district_n;
+               // temp['state_n'] = d.state_n;
+                temp['wasting_percent'] = +d.wasting_percent;
+                temp['stunting_percent'] = +d.stunting_percent;
+                temp['underweight_percent'] = +d.underweight_percent;
+                temp['low_birth_weight_percent'] = +d.low_birth_weight_percent;
+                temp['prnt_intd_cf_6to24mnth_child'] = +d.prnt_intd_cf_6to24mnth_child;
+                temp['prnt_chld_bf_at_birth'] = +d.prnt_chld_bf_at_birth;
+                temp['prnt_chld_excly_bf'] = +d.prnt_chld_excly_bf;
+                temp['prnt_child_1yr_immnztn'] = +d.prnt_child_1yr_immnztn;
+                temp['prnt_anwmic_wmn'] = +d.prnt_anwmic_wmn;
+                temp['prnt_trmstr_3wmn_cnsld_imdtbf'] = +d.prnt_trmstr_3wmn_cnsld_imdtbf;
+                temp['prnt_wmn_etg_xtr_ml_drng_prgncy'] = +d.prnt_wmn_etg_xtr_ml_drng_prgncy;
+                temp['prnt_wmn_rstg_drg_prgncy'] = +d.prnt_wmn_rstg_drg_prgncy;
+                temp['prnt_4_anc_vst_dlvry'] = +d.prnt_4_anc_vst_dlvry;
+            if(d.month_n == "Dec"){
+                    aproperty.push(temp);
+            }else if (d.month_n == "Jan"){
+                sproperty.push(temp);
+            }else if (d.month_n == "Nov"){
+                oproperty.push(temp);
+            }
+            
+        })
+
+        var listdata = [
+        aproperty,sproperty,oproperty
+        ]
+        console.log(listdata)
+        return listdata;
+        }
+
+        const selectData =  (val,monthwiseData) =>{
+        if(val == "nov"){
+                monthwiseData[0] = sortData(monthwiseData[0],'stunting');
+                return monthwiseData[0];
+        }else if (val == "dec"){
+            monthwiseData[1] = sortData(monthwiseData[1],'wating');
+                return monthwiseData[1];
+        }else if (val == 'jan'){
+            monthwiseData[2] = sortData(monthwiseData[2],'underweight');
+                return monthwiseData[2]       
+            }
+        }
+        //Sorting
+        const sortData = (data,parameter) =>{
+        sortedData = data.slice().sort((a, b) => d3.descending(a[parameter], b[parameter]))
+        return sortedData;
+        }
+        
+
+        //Taking Input
+        d3.csv("f2.csv").then(data => {
+
+            monthwiseData = monthwise(data);
+            console.log(monthwiseData);
+                d3.select("#monthdropdown")
+            .on("change", () =>{
+                        val = document.getElementById("monthdropdown").value
+                        mydata = selectData(val,monthwiseData);
+                            svg.selectAll("*").remove();
+                    render(mydata);
+                });
+
+                augData = monthwiseData[0];
+                sortedData = sortData(augData,'stunting');
+console.log(sortedData);
+
+            render(augData); 
+            
+        })
+
+
+</script>
+</html>

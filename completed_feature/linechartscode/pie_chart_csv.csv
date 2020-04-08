@@ -1,0 +1,40 @@
+month,block_n,project,district,no_enrolled,no_enrolled_dt,per_no_enrld,wasting,stunting,underweight,lbw
+Aug,Dahanu,Dahanu,Palghar,10733256,53112852,20.21,9.04,64.39,43.87,21.95
+Aug,Dahanu,Kasa,Palghar,3805032,53112852,7.16,11.65,70.87,52.17,0
+Aug,Jawhar,Jawhar 1,Palghar,765000,53112852,1.44,12.78,81.06,59.75,40
+Aug,Jawhar,Jawhar-2,Palghar,1635533,53112852,3.08,16.91,72.78,60.84,22.22
+Aug,Mokhada,Mokhada,Palghar,714938,53112852,1.35,15.38,66.67,43.48,0
+Aug,Palghar,Manor,Palghar,3525472,53112852,6.64,4.28,67.17,34.83,11.11
+Aug,Palghar,Palghar,Palghar,10453620,53112852,19.68,3.76,28.07,14.72,9.68
+Aug,Talasari,Talasari,Palghar,4674304,53112852,8.8,5.91,61.25,38.62,21.33
+Aug,Vasai,Vasai,Palghar,4535420,53112852,8.54,9.64,27.71,27.94,16.67
+Aug,Vasai,Vasai-2,Palghar,2512520,53112852,4.73,9.3,58.14,44,0
+Aug,Vikramgad,Vikramgad,Palghar,5390616,53112852,10.15,11.76,70.38,53.44,13.95
+Aug,Wada,Wada-1,Palghar,849290,53112852,1.6,8.96,68.62,49.55,3.33
+Aug,Wada,Wada-2,Palghar,3517851,53112852,6.62,7.61,61.42,36.27,15.71
+Oct,Dahanu,Dahanu,Palghar,11522736,58367357,19.74,7.15,60.17,36.68,24.17
+Oct,Dahanu,Kasa,Palghar,4861164,58367357,8.33,6.32,52.86,36.16,11.34
+Oct,Jawhar,Jawhar 1,Palghar,1067787,58367357,1.83,10.6,79.99,58.07,35
+Oct,Jawhar,Jawhar-2,Palghar,1759492,58367357,3.01,11.76,74.54,55.86,26.67
+Oct,Mokhada,Mokhada,Palghar,2112067,58367357,3.62,12.58,74.08,55.31,17.14
+Oct,Palghar,Manor,Palghar,3731928,58367357,6.39,3.59,62.29,31.35,14.19
+Oct,Palghar,Palghar,Palghar,10544952,58367357,18.07,3.29,29.83,11.42,11.19
+Oct,Talasari,Talasari,Palghar,4847656,58367357,8.31,5.9,60.96,34.43,16.37
+Oct,Vasai,Vasai,Palghar,4968175,58367357,8.51,3.6,24.33,11.32,20.72
+Oct,Vasai,Vasai-2,Palghar,3027352,58367357,5.19,3.01,46.29,20.68,23.29
+Oct,Vikramgad,Vikramgad,Palghar,5357660,58367357,9.18,9.58,70.04,48.06,18.68
+Oct,Wada,Wada-1,Palghar,884040,58367357,1.51,7.82,63.3,37.11,13.33
+Oct,Wada,Wada-2,Palghar,3682348,58367357,6.31,5.45,60.41,31.81,17.09
+Sep,Dahanu,Dahanu,Palghar,11395848,56999080,19.99,8.7,58.46,35.67,18.9
+Sep,Dahanu,Kasa,Palghar,4529679,56999080,7.95,9.12,54.29,35.8,0
+Sep,Jawhar,Jawhar 1,Palghar,1069317,56999080,1.88,12.13,79.89,61.23,14.29
+Sep,Jawhar,Jawhar-2,Palghar,1745358,56999080,3.06,14.59,72.96,57.09,22.06
+Sep,Mokhada,Mokhada,Palghar,1817115,56999080,3.19,13.1,77.76,59.4,6.25
+Sep,Palghar,Manor,Palghar,3682148,56999080,6.46,3.64,59.1,31.52,7.27
+Sep,Palghar,Palghar,Palghar,10478400,56999080,18.38,3.48,28.85,13.01,7.73
+Sep,Talasari,Talasari,Palghar,4752176,56999080,8.34,6.93,58.47,35.57,28.93
+Sep,Vasai,Vasai,Palghar,4783470,56999080,8.39,3.63,24.28,12.69,30.43
+Sep,Vasai,Vasai-2,Palghar,2903152,56999080,5.09,3.29,47.49,24.83,14.29
+Sep,Vikramgad,Vikramgad,Palghar,5314540,56999080,9.32,10.67,69.99,50.26,10.57
+Sep,Wada,Wada-1,Palghar,877507,56999080,1.54,8.4,65.85,41.25,24.32
+Sep,Wada,Wada-2,Palghar,3650370,56999080,6.4,6.69,63.28,35.79,21
