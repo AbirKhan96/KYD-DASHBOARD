@@ -1,0 +1,30 @@
+﻿﻿create table pregnant_women_3months_mh
+(
+
+	month_n character varying(10),
+	year numeric,
+	state_n character varying(25),
+	district_n character varying(25),
+	block_n character varying(25),
+	project_n character varying(50),
+	supervisor character varying(100),
+	no_lactating_women numeric,
+	no_pregnant_women numeric,
+	no_postnatal_women numeric,
+	anemia_percentage character varying(10),
+	tetanus_percentage character varying(10),
+	prnt_wmn_1_anc_vst_dlvry character varying(10),
+	prnt_wmn_2_anc_vst_dlvry character varying(10),
+	prnt_wmn_3_anc_vst_dlvry character varying(10),
+	prnt_wmn_4_anc_vst_dlvry character varying(10),
+	prntg_wmn_rstg_drg_prgncy character varying(10),
+	prntg_wmn_etg_xtr_ml_drg_prgncy character varying(10),
+	prntg_trmstr_3wmn_cnsld_imdtbf character varying(10),
+	no_anemic_wmn numeric,
+	no_tenatus_cmpltd numeric,
+	no_wmn_1_anc_vst_dlvry numeric,	
+	no_wmn_4_anc_vst_dlvry numeric,
+	no_wmn_rstg_drg_prgncy numeric,
+	no_wmn_etg_xtr_ml_drg_prgncy numeric,
+	no_trmstr_3wmn_cnsld_imdtbf numeric
+);

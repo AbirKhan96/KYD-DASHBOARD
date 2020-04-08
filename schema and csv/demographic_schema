@@ -1,0 +1,26 @@
+﻿﻿create table demographic_3months_mh
+(
+
+	month_n character varying(10),
+	year numeric,
+	state_n character varying(25),
+	district_n character varying(25),
+	block_n character varying(25),
+	project_n character varying(25),
+	supervisor character varying(100),
+	no_hh numeric,
+	total_benfi_aadhar numeric,
+	total_benfi numeric,
+	no_pregnant_women numeric,
+	no_pregnant_women_enrlld numeric,
+	no_lactating_women numeric,
+	no_lactating_women_enrlld numeric,
+	no_children_0-6y numeric,
+	no_children_0-6y_enrlld numeric,
+	no_children_0-6m_enrlld numeric,
+	no_children_6m-3y_enrlld numeric,
+	no_children_3-6y_enrlld numeric,
+	no_girls_11-14y numeric,
+	no_girls_out_school_11-14y numeric,
+	no_girls_15-18y numeric,
+);
